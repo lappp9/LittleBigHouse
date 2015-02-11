@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45A7F6C5A1E05B02D8F1D4A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F804FE9A285FB611DBFC2E4 /* libPods.a */; };
 		AE580F981A8B8B24002152EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580F971A8B8B24002152EA /* main.m */; };
 		AE580F9B1A8B8B24002152EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580F9A1A8B8B24002152EA /* AppDelegate.m */; };
-		AE580F9E1A8B8B24002152EA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580F9D1A8B8B24002152EA /* ViewController.m */; };
 		AE580FA11A8B8B24002152EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE580F9F1A8B8B24002152EA /* Main.storyboard */; };
 		AE580FA31A8B8B24002152EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE580FA21A8B8B24002152EA /* Images.xcassets */; };
 		AE580FA61A8B8B24002152EA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE580FA41A8B8B24002152EA /* LaunchScreen.xib */; };
 		AE580FB21A8B8B24002152EA /* LittleBigHouseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580FB11A8B8B24002152EA /* LittleBigHouseTests.m */; };
+		AEC8D3A11A8B8F4E00F93D62 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC8D3A01A8B8F4E00F93D62 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +28,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F804FE9A285FB611DBFC2E4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		63C33F6DBF478154D2E180F1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AE580F921A8B8B24002152EA /* LittleBigHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleBigHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE580F961A8B8B24002152EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE580F971A8B8B24002152EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE580F991A8B8B24002152EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AE580F9A1A8B8B24002152EA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AE580F9C1A8B8B24002152EA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AE580F9D1A8B8B24002152EA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AE580FA01A8B8B24002152EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE580FA21A8B8B24002152EA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AE580FA51A8B8B24002152EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AE580FAB1A8B8B24002152EA /* LittleBigHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleBigHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE580FB01A8B8B24002152EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE580FB11A8B8B24002152EA /* LittleBigHouseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LittleBigHouseTests.m; sourceTree = "<group>"; };
+		AEC8D39F1A8B8F4E00F93D62 /* LittleBigHouse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LittleBigHouse-Bridging-Header.h"; sourceTree = "<group>"; };
+		AEC8D3A01A8B8F4E00F93D62 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F12887C7A2063144E37BBB84 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45A7F6C5A1E05B02D8F1D4A4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +65,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8AAA23D96554E7157458E9C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F12887C7A2063144E37BBB84 /* Pods.debug.xcconfig */,
+				63C33F6DBF478154D2E180F1 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		98A957890789A5DEFAF82F3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F804FE9A285FB611DBFC2E4 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AE580F891A8B8B24002152EA = {
 			isa = PBXGroup;
 			children = (
 				AE580F941A8B8B24002152EA /* LittleBigHouse */,
 				AE580FAE1A8B8B24002152EA /* LittleBigHouseTests */,
 				AE580F931A8B8B24002152EA /* Products */,
+				8AAA23D96554E7157458E9C4 /* Pods */,
+				98A957890789A5DEFAF82F3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,12 +107,12 @@
 			children = (
 				AE580F991A8B8B24002152EA /* AppDelegate.h */,
 				AE580F9A1A8B8B24002152EA /* AppDelegate.m */,
-				AE580F9C1A8B8B24002152EA /* ViewController.h */,
-				AE580F9D1A8B8B24002152EA /* ViewController.m */,
 				AE580F9F1A8B8B24002152EA /* Main.storyboard */,
 				AE580FA21A8B8B24002152EA /* Images.xcassets */,
 				AE580FA41A8B8B24002152EA /* LaunchScreen.xib */,
 				AE580F951A8B8B24002152EA /* Supporting Files */,
+				AEC8D3A01A8B8F4E00F93D62 /* HomeViewController.swift */,
+				AEC8D39F1A8B8F4E00F93D62 /* LittleBigHouse-Bridging-Header.h */,
 			);
 			path = LittleBigHouse;
 			sourceTree = "<group>";
@@ -126,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE580FB51A8B8B24002152EA /* Build configuration list for PBXNativeTarget "LittleBigHouse" */;
 			buildPhases = (
+				1EFA91FC1D0463E0E94F9E91 /* Check Pods Manifest.lock */,
 				AE580F8E1A8B8B24002152EA /* Sources */,
 				AE580F8F1A8B8B24002152EA /* Frameworks */,
 				AE580F901A8B8B24002152EA /* Resources */,
+				E2617FDB43303648BDFCCA0D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,14 +240,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1EFA91FC1D0463E0E94F9E91 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E2617FDB43303648BDFCCA0D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AE580F8E1A8B8B24002152EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE580F9E1A8B8B24002152EA /* ViewController.m in Sources */,
 				AE580F9B1A8B8B24002152EA /* AppDelegate.m in Sources */,
 				AE580F981A8B8B24002152EA /* main.m in Sources */,
+				AEC8D3A11A8B8F4E00F93D62 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,21 +400,28 @@
 		};
 		AE580FB61A8B8B24002152EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F12887C7A2063144E37BBB84 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LittleBigHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LittleBigHouse/LittleBigHouse-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		AE580FB71A8B8B24002152EA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63C33F6DBF478154D2E180F1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LittleBigHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LittleBigHouse/LittleBigHouse-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -412,6 +478,7 @@
 				AE580FB71A8B8B24002152EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE580FB81A8B8B24002152EA /* Build configuration list for PBXNativeTarget "LittleBigHouseTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +487,7 @@
 				AE580FBA1A8B8B24002152EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
