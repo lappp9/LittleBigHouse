@@ -15,6 +15,7 @@
 		AE580FA61A8B8B24002152EA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE580FA41A8B8B24002152EA /* LaunchScreen.xib */; };
 		AE580FB21A8B8B24002152EA /* LittleBigHouseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580FB11A8B8B24002152EA /* LittleBigHouseTests.m */; };
 		AEC8D3A11A8B8F4E00F93D62 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC8D3A01A8B8F4E00F93D62 /* HomeViewController.swift */; };
+		AEC8D3A31A8BF88400F93D62 /* AddressEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC8D3A21A8BF88400F93D62 /* AddressEntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		AE580FB11A8B8B24002152EA /* LittleBigHouseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LittleBigHouseTests.m; sourceTree = "<group>"; };
 		AEC8D39F1A8B8F4E00F93D62 /* LittleBigHouse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LittleBigHouse-Bridging-Header.h"; sourceTree = "<group>"; };
 		AEC8D3A01A8B8F4E00F93D62 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AEC8D3A21A8BF88400F93D62 /* AddressEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressEntryViewController.swift; sourceTree = "<group>"; };
 		F12887C7A2063144E37BBB84 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				AE580FA41A8B8B24002152EA /* LaunchScreen.xib */,
 				AE580F951A8B8B24002152EA /* Supporting Files */,
 				AEC8D3A01A8B8F4E00F93D62 /* HomeViewController.swift */,
+				AEC8D3A21A8BF88400F93D62 /* AddressEntryViewController.swift */,
 				AEC8D39F1A8B8F4E00F93D62 /* LittleBigHouse-Bridging-Header.h */,
 			);
 			path = LittleBigHouse;
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEC8D3A31A8BF88400F93D62 /* AddressEntryViewController.swift in Sources */,
 				AE580F9B1A8B8B24002152EA /* AppDelegate.m in Sources */,
 				AE580F981A8B8B24002152EA /* main.m in Sources */,
 				AEC8D3A11A8B8F4E00F93D62 /* HomeViewController.swift in Sources */,
@@ -404,6 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LittleBigHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,6 +423,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LittleBigHouse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
