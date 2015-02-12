@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5E9734EA-7DE4-4C33-AC21-A8B615BE4E9A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>LittleBigHouse</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0B7A6B288612BB2546DBD3B21BB8C94B8522A4D8</key>
+		<string>github.com:lappp9/LittleBigHouse.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>LittleBigHouse.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0B7A6B288612BB2546DBD3B21BB8C94B8522A4D8</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:lappp9/LittleBigHouse.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0B7A6B288612BB2546DBD3B21BB8C94B8522A4D8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0B7A6B288612BB2546DBD3B21BB8C94B8522A4D8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LittleBigHouse</string>
+		</dict>
+	</array>
+</dict>
+</plist>

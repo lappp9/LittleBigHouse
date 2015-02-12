@@ -14,8 +14,9 @@
 		AE580FA31A8B8B24002152EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE580FA21A8B8B24002152EA /* Images.xcassets */; };
 		AE580FA61A8B8B24002152EA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE580FA41A8B8B24002152EA /* LaunchScreen.xib */; };
 		AE580FB21A8B8B24002152EA /* LittleBigHouseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580FB11A8B8B24002152EA /* LittleBigHouseTests.m */; };
-		AEC8D3A11A8B8F4E00F93D62 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC8D3A01A8B8F4E00F93D62 /* HomeViewController.swift */; };
-		AEC8D3A31A8BF88400F93D62 /* AddressEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC8D3A21A8BF88400F93D62 /* AddressEntryViewController.swift */; };
+		AEBCB3D51A8C2906007B6FAB /* LBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3D41A8C2906007B6FAB /* LBHomeViewController.m */; };
+		AEBCB3D81A8C2D2C007B6FAB /* LBAddressEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3D71A8C2D2C007B6FAB /* LBAddressEntryViewController.m */; };
+		AEBCB3DB1A8C66AD007B6FAB /* AddressConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3DA1A8C66AD007B6FAB /* AddressConfirmationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +43,12 @@
 		AE580FAB1A8B8B24002152EA /* LittleBigHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleBigHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE580FB01A8B8B24002152EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE580FB11A8B8B24002152EA /* LittleBigHouseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LittleBigHouseTests.m; sourceTree = "<group>"; };
-		AEC8D39F1A8B8F4E00F93D62 /* LittleBigHouse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LittleBigHouse-Bridging-Header.h"; sourceTree = "<group>"; };
-		AEC8D3A01A8B8F4E00F93D62 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		AEC8D3A21A8BF88400F93D62 /* AddressEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressEntryViewController.swift; sourceTree = "<group>"; };
+		AEBCB3D31A8C2906007B6FAB /* LBHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeViewController.h; sourceTree = "<group>"; };
+		AEBCB3D41A8C2906007B6FAB /* LBHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeViewController.m; sourceTree = "<group>"; };
+		AEBCB3D61A8C2D2C007B6FAB /* LBAddressEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBAddressEntryViewController.h; sourceTree = "<group>"; };
+		AEBCB3D71A8C2D2C007B6FAB /* LBAddressEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBAddressEntryViewController.m; sourceTree = "<group>"; };
+		AEBCB3D91A8C66AD007B6FAB /* AddressConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressConfirmationViewController.h; sourceTree = "<group>"; };
+		AEBCB3DA1A8C66AD007B6FAB /* AddressConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressConfirmationViewController.m; sourceTree = "<group>"; };
 		F12887C7A2063144E37BBB84 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,9 +117,12 @@
 				AE580FA21A8B8B24002152EA /* Images.xcassets */,
 				AE580FA41A8B8B24002152EA /* LaunchScreen.xib */,
 				AE580F951A8B8B24002152EA /* Supporting Files */,
-				AEC8D3A01A8B8F4E00F93D62 /* HomeViewController.swift */,
-				AEC8D3A21A8BF88400F93D62 /* AddressEntryViewController.swift */,
-				AEC8D39F1A8B8F4E00F93D62 /* LittleBigHouse-Bridging-Header.h */,
+				AEBCB3D31A8C2906007B6FAB /* LBHomeViewController.h */,
+				AEBCB3D41A8C2906007B6FAB /* LBHomeViewController.m */,
+				AEBCB3D61A8C2D2C007B6FAB /* LBAddressEntryViewController.h */,
+				AEBCB3D71A8C2D2C007B6FAB /* LBAddressEntryViewController.m */,
+				AEBCB3D91A8C66AD007B6FAB /* AddressConfirmationViewController.h */,
+				AEBCB3DA1A8C66AD007B6FAB /* AddressConfirmationViewController.m */,
 			);
 			path = LittleBigHouse;
 			sourceTree = "<group>";
@@ -281,10 +288,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEC8D3A31A8BF88400F93D62 /* AddressEntryViewController.swift in Sources */,
+				AEBCB3DB1A8C66AD007B6FAB /* AddressConfirmationViewController.m in Sources */,
 				AE580F9B1A8B8B24002152EA /* AppDelegate.m in Sources */,
+				AEBCB3D51A8C2906007B6FAB /* LBHomeViewController.m in Sources */,
+				AEBCB3D81A8C2D2C007B6FAB /* LBAddressEntryViewController.m in Sources */,
 				AE580F981A8B8B24002152EA /* main.m in Sources */,
-				AEC8D3A11A8B8F4E00F93D62 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
