@@ -245,10 +245,10 @@
             </objects>
             <point key="canvasLocation" x="847" y="345.5"/>
         </scene>
-        <!--View Controller-->
+        <!--House Images View Controller-->
         <scene sceneID="zQq-PY-hLE">
             <objects>
-                <viewController id="JQh-bm-T01" sceneMemberID="viewController">
+                <viewController id="JQh-bm-T01" customClass="HouseImagesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jLb-9j-Zst"/>
                         <viewControllerLayoutGuide type="bottom" id="KbQ-Eo-Igc"/>
@@ -293,16 +293,27 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFR-5Z-1VF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFR-5Z-1VF">
                                 <rect key="frame" x="16" y="488" width="288" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="cVh-E4-c6K"/>
+                                </constraints>
                                 <state key="normal" title="Next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="UFR-5Z-1VF" secondAttribute="trailing" constant="16" id="GxP-TS-pBz"/>
+                            <constraint firstItem="KbQ-Eo-Igc" firstAttribute="top" secondItem="UFR-5Z-1VF" secondAttribute="bottom" constant="20" id="anJ-0A-mce"/>
+                            <constraint firstItem="UFR-5Z-1VF" firstAttribute="leading" secondItem="3tZ-FP-Yfk" secondAttribute="leading" constant="16" id="dmg-MD-JMA"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="nextButton" destination="UFR-5Z-1VF" id="XUZ-Bz-MJL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryN-Y3-vkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

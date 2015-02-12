@@ -17,6 +17,7 @@
 		AEBCB3D51A8C2906007B6FAB /* LBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3D41A8C2906007B6FAB /* LBHomeViewController.m */; };
 		AEBCB3D81A8C2D2C007B6FAB /* LBAddressEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3D71A8C2D2C007B6FAB /* LBAddressEntryViewController.m */; };
 		AEBCB3DB1A8C66AD007B6FAB /* AddressConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3DA1A8C66AD007B6FAB /* AddressConfirmationViewController.m */; };
+		AEBCB3DE1A8C6C27007B6FAB /* HouseImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3DD1A8C6C27007B6FAB /* HouseImagesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		AEBCB3D71A8C2D2C007B6FAB /* LBAddressEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBAddressEntryViewController.m; sourceTree = "<group>"; };
 		AEBCB3D91A8C66AD007B6FAB /* AddressConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressConfirmationViewController.h; sourceTree = "<group>"; };
 		AEBCB3DA1A8C66AD007B6FAB /* AddressConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressConfirmationViewController.m; sourceTree = "<group>"; };
+		AEBCB3DC1A8C6C27007B6FAB /* HouseImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseImagesViewController.h; sourceTree = "<group>"; };
+		AEBCB3DD1A8C6C27007B6FAB /* HouseImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseImagesViewController.m; sourceTree = "<group>"; };
 		F12887C7A2063144E37BBB84 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +126,8 @@
 				AEBCB3D71A8C2D2C007B6FAB /* LBAddressEntryViewController.m */,
 				AEBCB3D91A8C66AD007B6FAB /* AddressConfirmationViewController.h */,
 				AEBCB3DA1A8C66AD007B6FAB /* AddressConfirmationViewController.m */,
+				AEBCB3DC1A8C6C27007B6FAB /* HouseImagesViewController.h */,
+				AEBCB3DD1A8C6C27007B6FAB /* HouseImagesViewController.m */,
 			);
 			path = LittleBigHouse;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEBCB3DB1A8C66AD007B6FAB /* AddressConfirmationViewController.m in Sources */,
+				AEBCB3DE1A8C6C27007B6FAB /* HouseImagesViewController.m in Sources */,
 				AE580F9B1A8B8B24002152EA /* AppDelegate.m in Sources */,
 				AEBCB3D51A8C2906007B6FAB /* LBHomeViewController.m in Sources */,
 				AEBCB3D81A8C2D2C007B6FAB /* LBAddressEntryViewController.m in Sources */,
