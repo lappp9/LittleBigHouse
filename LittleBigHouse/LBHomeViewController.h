@@ -1,6 +1,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LBHomeViewController : UIViewController
+@interface LBHomeViewController : UIViewController<UIAlertViewDelegate>
 
 @end

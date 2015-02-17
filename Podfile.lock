@@ -27,7 +27,7 @@ PODS:
   - Shimmer (1.0.2)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.4)
+  - AFNetworking (~> 2.5)
   - AsyncDisplayKit
   - pop (~> 1.0)
   - Shimmer (~> 1.0)

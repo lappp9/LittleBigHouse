@@ -1,22 +1,30 @@
-//
-//  AppDelegate.m
-//  LittleBigHouse
-//
-//  Created by Luke Parham on 2/11/15.
-//  Copyright (c) 2015 Luke Parham. All rights reserved.
-//
 
 #import "AppDelegate.h"
+#import "LBNavigationControllerViewController.h"
+#import "LBHomeViewController.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
 
++ (instancetype)shared;
+{
+    return (AppDelegate *)UIApplication.sharedApplication.delegate;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    CGRect r = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    
+    _window = [[UIWindow alloc] initWithFrame:r];
+    
+    UIViewController *navVC = [[LBNavigationControllerViewController alloc] initWithRootViewController:LBHomeViewController.new];
+    navVC.view.frame = r;
+        
+    [_window setRootViewController:navVC];
+    [_window makeKeyAndVisible];
+    
     return YES;
 }
 

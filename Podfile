@@ -5,6 +5,5 @@
 pod 'AsyncDisplayKit'
 pod 'pop', '~> 1.0'
 pod 'Shimmer', '~> 1.0'
-pod 'AFNetworking', '~> 2.4'
-
+pod 'AFNetworking', '~> 2.5'
 

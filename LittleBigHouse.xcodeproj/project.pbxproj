@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		45A7F6C5A1E05B02D8F1D4A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F804FE9A285FB611DBFC2E4 /* libPods.a */; };
+		AE096E291A92ABA500C2510B /* LBLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE096E281A92ABA500C2510B /* LBLocationManager.m */; };
+		AE096E2C1A92BBDD00C2510B /* LBNavigationControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE096E2B1A92BBDD00C2510B /* LBNavigationControllerViewController.m */; };
 		AE580F981A8B8B24002152EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580F971A8B8B24002152EA /* main.m */; };
 		AE580F9B1A8B8B24002152EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580F9A1A8B8B24002152EA /* AppDelegate.m */; };
 		AE580FA11A8B8B24002152EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE580F9F1A8B8B24002152EA /* Main.storyboard */; };
@@ -34,6 +36,10 @@
 /* Begin PBXFileReference section */
 		1F804FE9A285FB611DBFC2E4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C33F6DBF478154D2E180F1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		AE096E271A92ABA500C2510B /* LBLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLocationManager.h; sourceTree = "<group>"; };
+		AE096E281A92ABA500C2510B /* LBLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLocationManager.m; sourceTree = "<group>"; };
+		AE096E2A1A92BBDD00C2510B /* LBNavigationControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBNavigationControllerViewController.h; sourceTree = "<group>"; };
+		AE096E2B1A92BBDD00C2510B /* LBNavigationControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBNavigationControllerViewController.m; sourceTree = "<group>"; };
 		AE580F921A8B8B24002152EA /* LittleBigHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleBigHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE580F961A8B8B24002152EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE580F971A8B8B24002152EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,6 +129,8 @@
 				AE580FA21A8B8B24002152EA /* Images.xcassets */,
 				AE580FA41A8B8B24002152EA /* LaunchScreen.xib */,
 				AE580F951A8B8B24002152EA /* Supporting Files */,
+				AE096E2A1A92BBDD00C2510B /* LBNavigationControllerViewController.h */,
+				AE096E2B1A92BBDD00C2510B /* LBNavigationControllerViewController.m */,
 				AEBCB3D31A8C2906007B6FAB /* LBHomeViewController.h */,
 				AEBCB3D41A8C2906007B6FAB /* LBHomeViewController.m */,
 				AEBCB3D61A8C2D2C007B6FAB /* LBAddressEntryViewController.h */,
@@ -133,6 +141,8 @@
 				AEBCB3DD1A8C6C27007B6FAB /* HouseImagesViewController.m */,
 				AEBCB3E21A8D2B21007B6FAB /* LBButtonFactory.h */,
 				AEBCB3E31A8D2B21007B6FAB /* LBButtonFactory.m */,
+				AE096E271A92ABA500C2510B /* LBLocationManager.h */,
+				AE096E281A92ABA500C2510B /* LBLocationManager.m */,
 			);
 			path = LittleBigHouse;
 			sourceTree = "<group>";
@@ -298,9 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE096E291A92ABA500C2510B /* LBLocationManager.m in Sources */,
 				AEBCB3DB1A8C66AD007B6FAB /* AddressConfirmationViewController.m in Sources */,
 				AEBCB3DE1A8C6C27007B6FAB /* HouseImagesViewController.m in Sources */,
 				AE580F9B1A8B8B24002152EA /* AppDelegate.m in Sources */,
+				AE096E2C1A92BBDD00C2510B /* LBNavigationControllerViewController.m in Sources */,
 				AEBCB3E41A8D2B21007B6FAB /* LBButtonFactory.m in Sources */,
 				AEBCB3D51A8C2906007B6FAB /* LBHomeViewController.m in Sources */,
 				AEBCB3D81A8C2D2C007B6FAB /* LBAddressEntryViewController.m in Sources */,
