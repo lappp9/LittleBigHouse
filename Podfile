@@ -6,4 +6,5 @@ pod 'AsyncDisplayKit'
 pod 'pop', '~> 1.0'
 pod 'Shimmer', '~> 1.0'
 pod 'AFNetworking', '~> 2.5'
+pod 'Google-Maps-iOS-SDK', '~> 1.9'
 

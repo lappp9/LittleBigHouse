@@ -2,6 +2,7 @@
 #import "LBAddressEntryViewController.h"
 #import "LBButtonFactory.h"
 #import "LBLocationManager.h"
+#import "HouseImagesViewController.h"
 #import <FBShimmeringView.h>
 
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
@@ -54,7 +55,8 @@
     
     [self autoFillAddressIfNecessary];
     
-    NSLog(@"Should autofill address: %@", _shouldAutoFillAddress ? @"YES" : @"NO");
+    [self disableNextButton];
+    
     _locationHasBeenFound = NO;
     
     [NSNotificationCenter.defaultCenter addObserverForName:kZipCodeWasSetNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
@@ -66,6 +68,7 @@
                 _cityTextField.text = [LBLocationManager.shared deviceCity];
                 _stateTextField.text = [LBLocationManager.shared deviceState];
                 _zipCodeTextField.text = [LBLocationManager.shared deviceZipCode];
+                [self validateTextFields];
             }
         } else {
             NSLog(@"Still looking or already found");
@@ -73,6 +76,30 @@
     }];
     
     self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)validateTextFields;
+{
+    if (!([_streetOneTextField.text isEqualToString:@""] ||
+        [_cityTextField.text isEqualToString:@""] ||
+        [_stateTextField.text isEqualToString:@""] ||
+        [_zipCodeTextField.text isEqualToString:@""])) {
+        [self enableNextButton];
+    } else {
+        [self disableNextButton];
+    }
+}
+
+- (void)disableNextButton;
+{
+    _nextButton.alpha = 0.7;
+    _nextButton.enabled = NO;
+}
+
+- (void)enableNextButton;
+{
+    _nextButton.alpha = 1.0;
+    _nextButton.enabled = YES;
 }
 
 - (void)layoutLabel;
@@ -123,7 +150,7 @@
     _nextButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _nextButton.frame = CGRectMake(16, yOrigin, buttonWidth, 60);
     _nextButton.titleLabel.font = [UIFont systemFontOfSize:17];
-    [_nextButton setTitle: @"Enter an Address" forState:UIControlStateNormal];
+    [_nextButton setTitle: @"Next" forState:UIControlStateNormal];
     [LBButtonFactory styleButton:_nextButton];
     
     [_nextButton addTarget:self action:@selector(nextButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -157,12 +184,14 @@
 
 - (void)nextButtonWasTapped:(UIButton *)button;
 {
-
+    HouseImagesViewController *vc = [[HouseImagesViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    [self validateTextFields];
     return YES;
 }
 
