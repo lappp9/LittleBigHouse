@@ -78,15 +78,17 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)validateTextFields;
+- (BOOL)validateTextFields;
 {
     if (!([_streetOneTextField.text isEqualToString:@""] ||
         [_cityTextField.text isEqualToString:@""] ||
         [_stateTextField.text isEqualToString:@""] ||
         [_zipCodeTextField.text isEqualToString:@""])) {
         [self enableNextButton];
+        return YES;
     } else {
         [self disableNextButton];
+        return NO;
     }
 }
 
@@ -121,13 +123,18 @@
     
     NSArray *textFields = @[_streetOneTextField, _streetTwoTextField, _cityTextField, _stateTextField, _zipCodeTextField];
     NSArray *placeholders = @[@"Street 1", @"Street 2", @"City", @"State", @"Zip Code"];
+//    NSArray *nextResponders = @[_streetTwoTextField, _cityTextField, _stateTextField, _zipCodeTextField];
     
     for (NSInteger i = 0; i < textFields.count; i++) {
-        [self layoutAddressTextField:textFields[i] atPosition:i withPlaceholder:placeholders[i]];
+        UITextField *textField = textFields[i];
+        UIReturnKeyType returnKey = (i == textFields.count -1) ? UIReturnKeyGo : UIReturnKeyNext;
+        
+        [self layoutAddressTextField:textField atPosition:i withPlaceholder:placeholders[i] andReturnKey:returnKey];
+        
     }
 }
 
-- (void)layoutAddressTextField:(UITextField *)textField atPosition:(NSInteger)n withPlaceholder:(NSString *)placeholder;
+- (void)layoutAddressTextField:(UITextField *)textField atPosition:(NSInteger)n withPlaceholder:(NSString *)placeholder andReturnKey:(UIReturnKeyType)returnKeyType;
 {
     CGFloat yPosition = 44 + 16 + 20 + _label.frame.size.height + 16 + (8 * n) + (44 * n);
 
@@ -138,6 +145,9 @@
     textField.layer.borderColor = [UIColor lightGrayColor].CGColor;
     textField.returnKeyType = UIReturnKeyDefault;
     textField.delegate = self;
+    textField.returnKeyType = returnKeyType;
+    textField.tag = n;
+//    textField.nextResponder = nextResponder;
     
     [self.view addSubview:textField];
 }
@@ -190,8 +200,19 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    if ([textField isEqual:_zipCodeTextField]) {
+        [textField resignFirstResponder];
+        if ([self validateTextFields]) {
+            [_nextButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+        }
+    } else {
+        UIResponder* nextResponder = [textField.superview viewWithTag:textField.tag + 1];
+
+        [nextResponder becomeFirstResponder];
+    }
+    
     [self validateTextFields];
+    
     return YES;
 }
 

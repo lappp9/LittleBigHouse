@@ -3,6 +3,7 @@
 #import "LBButtonFactory.h"
 #import "LBAddressEntryViewController.h"
 #import "LBLocationManager.h"
+#import "HouseImagesViewController.h"
 #import <AsyncDisplayKit.h>
 
 @interface LBHomeViewController ()
@@ -87,8 +88,7 @@
 {
     if ([LBLocationManager.shared isAuthorized]) {
         [LBLocationManager.shared startFindingLocation];
-        LBAddressEntryViewController *vc = [[LBAddressEntryViewController alloc] init];
-        vc.shouldAutoFillAddress = YES;
+        HouseImagesViewController *vc = HouseImagesViewController.new;
         [self.navigationController pushViewController:vc animated:YES];
     } else if ([LBLocationManager.shared wasDenied]) {
         [[[UIAlertView alloc] initWithTitle:@"Location Services Disabled"

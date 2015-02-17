@@ -29,7 +29,8 @@
     _mapView.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
     [self.view addSubview:_mapView];
     
-    CLLocationCoordinate2D panoramaNear = [LBLocationManager.shared currentLocation].coordinate;
+    //put some stuff in here around if the coordinate isn't ready yet or something
+    CLLocationCoordinate2D panoramaNear = {50.059139,-122.958391}; // [LBLocationManager.shared currentLocation].coordinate;
     
     GMSPanoramaView *panoView = [GMSPanoramaView panoramaWithFrame:CGRectZero nearCoordinate:panoramaNear];
     
