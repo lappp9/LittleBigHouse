@@ -1,6 +1,7 @@
 
 #import "HouseImagesViewController.h"
 #import "LBButtonFactory.h"
+#import "LBLocationManager.h"
 #import <GoogleMaps/GoogleMaps.h>
 
 @interface HouseImagesViewController ()
@@ -26,8 +27,13 @@
     _mapView = [[UIView alloc] init];
     _mapView.frame = (CGRect){{0, 0}, CGSizeMake([UIScreen mainScreen].bounds.size.width - 32, [UIScreen mainScreen].bounds.size.height/2)};
     _mapView.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
-    _mapView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_mapView];
+    
+    CLLocationCoordinate2D panoramaNear = [LBLocationManager.shared currentLocation].coordinate;
+    
+    GMSPanoramaView *panoView = [GMSPanoramaView panoramaWithFrame:CGRectZero nearCoordinate:panoramaNear];
+    
+    self.view = panoView;
 }
 
 - (void)layoutLabel;

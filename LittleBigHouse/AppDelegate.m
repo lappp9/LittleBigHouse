@@ -2,6 +2,7 @@
 #import "AppDelegate.h"
 #import "LBNavigationControllerViewController.h"
 #import "LBHomeViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface AppDelegate ()
 @end
@@ -14,7 +15,8 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    [GMSServices provideAPIKey:@"AIzaSyC1PvU2xyN8yCk5SOpm6v5b-KA9SstIrXY"];
+    
     CGRect r = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     
     _window = [[UIWindow alloc] initWithFrame:r];

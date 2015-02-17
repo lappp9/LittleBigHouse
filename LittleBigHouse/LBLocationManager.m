@@ -74,6 +74,15 @@
     [NSNotificationCenter.defaultCenter postNotificationName:self.isAuthorized ? kAuthorizationWasGrantedNotification : kAuthorizationWasDeniedNotification object:self];
 }
 
+- (CLLocationCoordinate2D)coordinatesFromAddress;
+{
+//    CLGeocoder *g = [[CLGeocoder alloc] init];
+//    [g geocodeAddressDictionary:@{} completionHandler:^(NSArray *placemarks, NSError *error) {
+//        //
+//    }];
+    return CLLocationCoordinate2DMake(0, 0);
+}
+
 - (BOOL)isAuthorized;
 {
     return !(CLLocationManager.authorizationStatus == kCLAuthorizationStatusNotDetermined ||
