@@ -76,6 +76,15 @@
     }];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.view addGestureRecognizer:[UITapGestureRecognizer.alloc initWithTarget:self action:@selector(viewWasTapped:)]];
+}
+
+- (void)viewWasTapped:(UITapGestureRecognizer *)tap;
+{
+    for (UITextField *tf in @[_streetOneTextField, _streetTwoTextField, _cityTextField, _stateTextField, _zipCodeTextField]) {
+        [tf resignFirstResponder];
+    }
 }
 
 - (BOOL)validateTextFields;
