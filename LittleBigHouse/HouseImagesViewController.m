@@ -2,52 +2,94 @@
 #import "HouseImagesViewController.h"
 #import "LBButtonFactory.h"
 #import "LBLocationManager.h"
-#import <GoogleMaps/GoogleMaps.h>
+#import "LBGoogleMapStreetViewController.h"
 
 @interface HouseImagesViewController ()
 @property (nonatomic) UIButton *nextButton;
 @property (nonatomic) UILabel *label;
-@property (nonatomic) UIView *mapView;
+
+@property (nonatomic) CGFloat screenWidth;
+@property (nonatomic) CGFloat screenHeight;
+
+@property (nonatomic) UIView *streetViewContainer;
 @end
 
 @implementation HouseImagesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:NO];
+    
+    _screenHeight = [UIScreen mainScreen].bounds.size.height;
+    _screenWidth  = [UIScreen mainScreen].bounds.size.width;
 
-    self.navigationController.navigationBarHidden = NO;
+    if (![self navigationController]) {
+        [self addDismissableNavBar];
+    }
 
-
-    [self layoutLabel];
     [self layoutNextButton];
     [self layoutMapView];
     
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)layoutMapView;
+- (void)addDismissableNavBar;
 {
-    _mapView = [[UIView alloc] init];
-    _mapView.frame = (CGRect){{0, 0}, CGSizeMake([UIScreen mainScreen].bounds.size.width - 32, [UIScreen mainScreen].bounds.size.height/2)};
-    _mapView.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
-    [self.view addSubview:_mapView];
+    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     
-    //put some stuff in here around if the coordinate isn't ready yet or something
-    CLLocationCoordinate2D panoramaNear = {50.059139,-122.958391}; // [LBLocationManager.shared currentLocation].coordinate;
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissWasTapped:)];
+    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Save Images"];
+    item.leftBarButtonItem = backButton;
+    [navbar setItems:@[item]];
     
-    GMSPanoramaView *panoView = [GMSPanoramaView panoramaWithFrame:CGRectZero nearCoordinate:panoramaNear];
-    
-    self.view = panoView;
+    [self.view addSubview:navbar];
 }
 
-- (void)layoutLabel;
+- (void)dismissWasTapped:(UIBarButtonItem *)backButton;
 {
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(16, 44 + 16 + 20, [UIScreen mainScreen].bounds.size.width - 32, 44)];
-    _label.text = @"Choose images";
-    _label.textAlignment = NSTextAlignmentCenter;
-    _label.font = [UIFont fontWithName:@"HelveticaNeue" size:24];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
-    [self.view addSubview:_label];
+- (void)layoutMapView;
+{
+    UIView *tempMapView = [[UIView alloc] init];
+    
+    CGFloat mapHeight = _screenHeight - 50 - 8 - 20 - _nextButton.frame.size.height;
+    
+    tempMapView.frame = CGRectMake(0, 51, _screenWidth, mapHeight);
+    tempMapView.backgroundColor = [UIColor darkGrayColor];
+    
+    _streetViewContainer = [[UIView alloc] init];
+    _streetViewContainer.frame = CGRectMake(0, 0, _screenWidth, mapHeight * (7.0/9.0));
+    _streetViewContainer.backgroundColor = [UIColor greenColor];
+
+    LBGoogleMapStreetViewController *vc = [[LBGoogleMapStreetViewController alloc] init];
+    vc.view.frame = _streetViewContainer.frame;
+    
+    [_streetViewContainer addSubview:vc.view];
+   
+    [tempMapView addSubview:_streetViewContainer];
+    
+    [self layoutScreenShotViews:tempMapView];
+    
+    [self.view addSubview:tempMapView];
+}
+
+- (void)layoutScreenShotViews:(UIView *)mapView;
+{
+    UIView *leftScreenshot = [[UIView alloc] init];
+    UIView *centerScreenshot = [[UIView alloc] init];
+    UIView *rightScreenShot = [[UIView alloc] init];
+    
+    NSInteger i = 0;
+    CGFloat subViewWidth = mapView.frame.size.width/3;
+    NSArray *colors = @[[UIColor blueColor], [UIColor redColor], [UIColor purpleColor]];
+    for (UIView *view in @[leftScreenshot, centerScreenshot, rightScreenShot]) {
+        view.frame = CGRectMake(i * subViewWidth, mapView.frame.size.height * (7.0/9.0), subViewWidth, mapView.frame.size.height * (2.0/9.0));
+        view.backgroundColor = (UIColor *)colors[i];
+        [mapView addSubview:view];
+        i++;
+    }
 }
 
 - (void)layoutNextButton;
@@ -69,6 +111,11 @@
 - (void)nextButtonWasTapped:(UIButton *)button;
 {
     
+}
+
+- (BOOL)prefersStatusBarHidden;
+{
+    return YES;
 }
 
 @end

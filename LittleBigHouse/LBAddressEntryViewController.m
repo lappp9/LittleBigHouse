@@ -45,7 +45,11 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
-
+    
+    if (![self navigationController]) {
+        [self addDismissableNavBar];
+    }
+    
     self.navigationController.navigationBarHidden = NO;
 
     [self layoutLabel];
@@ -70,6 +74,14 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addGestureRecognizer:[UITapGestureRecognizer.alloc initWithTarget:self action:@selector(viewWasTapped:)]];
+}
+
+- (void)dismissWasTapped:(UIBarButtonItem *)backButton;
+{
+    for (UITextField *tf in @[_streetOneTextField, _streetTwoTextField, _cityTextField, _stateTextField, _zipCodeTextField]) {
+        [tf resignFirstResponder];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewWasTapped:(UITapGestureRecognizer *)tap;
@@ -191,6 +203,23 @@
     
     [self validateTextFields];
     
+    return YES;
+}
+
+- (void)addDismissableNavBar;
+{
+    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissWasTapped:)];
+    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Save Images"];
+    item.leftBarButtonItem = backButton;
+    [navbar setItems:@[item]];
+    
+    [self.view addSubview:navbar];
+}
+
+- (BOOL)prefersStatusBarHidden;
+{
     return YES;
 }
 

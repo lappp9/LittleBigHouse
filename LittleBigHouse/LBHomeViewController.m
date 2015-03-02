@@ -116,9 +116,7 @@
         [LBLocationManager.shared startFindingLocation];
         HouseImagesViewController *vc = HouseImagesViewController.new;
         
-//        [self.navigationController presentViewController:vc animated:YES completion:nil];
-
-        [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
     } else if ([LBLocationManager.shared wasDenied]) {
         [[[UIAlertView alloc] initWithTitle:@"Location Services Disabled"
                                     message:@"To re-enable, please go to Settings and turn on Location Service for this app."
@@ -137,9 +135,7 @@
 - (void)addressButtonWasTapped:(UIButton *)button;
 {
     LBAddressEntryViewController *vc = [[LBAddressEntryViewController alloc] init];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-//    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark Alert View Delegate
@@ -152,8 +148,7 @@
         [LBLocationManager.shared startFindingLocation];
         LBAddressEntryViewController *vc = [[LBAddressEntryViewController alloc] init];
 
-        [self.navigationController pushViewController:vc animated:YES];
-//        [self.navigationController presentViewController:vc animated:YES completion:nil];
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
     }
 }
 
