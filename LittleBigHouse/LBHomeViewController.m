@@ -4,9 +4,13 @@
 #import "LBAddressEntryViewController.h"
 #import "LBLocationManager.h"
 #import "HouseImagesViewController.h"
+#import "FXBlurView.h"
 #import <AsyncDisplayKit.h>
 
 @interface LBHomeViewController ()
+@property (nonatomic) CGFloat screenWidth;
+@property (nonatomic) CGFloat screenHeight;
+
 @property (strong, nonatomic) UILabel *label;
 @property (strong, nonatomic) UIButton *addressButton;
 @property (strong, nonatomic) UIButton *gpsButton;
@@ -17,65 +21,87 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _screenHeight = [UIScreen mainScreen].bounds.size.height;
+    _screenWidth  = [UIScreen mainScreen].bounds.size.width;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.view.frame = [UIScreen mainScreen].bounds;
     
+    self.navigationController.navigationBarHidden = YES;
+
+    ASImageNode *backgroundImage = [[ASImageNode alloc] init];
+    backgroundImage.image = [UIImage imageNamed:@"gingerbread"];
+    backgroundImage.frame = self.view.bounds;
+    [self.view addSubview:backgroundImage.view];
+    
+    [self layoutIcon];
+    [self layoutInfoButton];
     [self layoutLabel];
-    [self layoutGpsButton];
     [self layoutOrLabel];
     [self layoutAddressButton];
 }
 
+- (void)viewWillAppear:(BOOL)animated;
+{
+    self.navigationController.navigationBarHidden = YES;
+}
+
 #pragma mark Layout
+
+- (void)layoutIcon;
+{
+    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_with_text"]];
+    icon.contentMode = UIViewContentModeScaleAspectFit;
+    icon.bounds = CGRectMake(0, 0, _screenWidth/3, _screenHeight/4);
+    icon.center = CGPointMake(_screenWidth/2, _screenHeight/4);
+    [self.view addSubview:icon];
+}
+
+- (void)layoutInfoButton;
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"info"] forState:UIControlStateNormal];
+    button.bounds = CGRectMake(0, 0, button.imageView.image.size.width, button.imageView.image.size.height);
+    button.center = CGPointMake(_screenWidth - 8 - button.frame.size.width, 8 + button.frame.size.height);
+    
+    [self.view addSubview:button];
+}
 
 - (void)layoutLabel;
 {
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(16, 44 + 16 + 20, [UIScreen mainScreen].bounds.size.width - 32, 44)];
-    _label.text = @"Tap to get your location";
-    _label.textAlignment = NSTextAlignmentCenter;
-    _label.font = [UIFont fontWithName:@"HelveticaNeue" size:24];
-    [self.view addSubview:_label];
-}
-
-- (void)layoutGpsButton;
-{
-    _gpsButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    _gpsButton.layer.cornerRadius = 4;
-    _gpsButton.layer.borderWidth = 1.0;
-    _gpsButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    _gpsButton.userInteractionEnabled = YES;
-    _gpsButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    _gpsButton.contentMode = UIViewContentModeScaleAspectFit;
-    [_gpsButton setImage:[UIImage imageNamed:@"gps"] forState:UIControlStateNormal];
-    _gpsButton.frame = CGRectMake(16, 44 + [UIScreen mainScreen].bounds.size.height/4, _gpsButton.imageView.image.size.width, [UIScreen mainScreen].bounds.size.height/3);
-    _gpsButton.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, _gpsButton.center.y);
+    CGFloat buttonWidth = [UIScreen mainScreen].bounds.size.width/2;
     
-    [_gpsButton addTarget:self action:@selector(gpsButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.bounds = CGRectMake(0, 0, buttonWidth, 60);
+    button.center = CGPointMake(_screenWidth/2, _screenHeight * (3.0/5.0));
+    [button setTitle:@"My Location" forState:UIControlStateNormal];
+    [LBButtonFactory clearStyleButton:button];
     
-    [self.view addSubview:_gpsButton];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gpsButtonWasTapped:)];
+    [button addGestureRecognizer:tap];
+    
+    [self.view addSubview:button];
 }
 
 - (void)layoutOrLabel;
 {
-    CGFloat yOrigin = 44 + [UIScreen mainScreen].bounds.size.height/4 + _gpsButton.frame.size.height + 32;
-
-    UILabel *orLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, yOrigin, [UIScreen mainScreen].bounds.size.width - 32, 44)];
+    UILabel *orLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _screenWidth, 44)];
+    orLabel.center = CGPointMake(_screenWidth/2, _screenHeight * (3.5/5.0));
     orLabel.text = @"Or";
     orLabel.textAlignment = NSTextAlignmentCenter;
-    orLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:24];
+    orLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+    orLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:orLabel];
 }
 
+
 - (void)layoutAddressButton;
 {
-    CGFloat yOrigin = [UIScreen mainScreen].bounds.size.height - 60 - 20;
-    CGFloat buttonWidth = [UIScreen mainScreen].bounds.size.width - 32;
-    
     _addressButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    _addressButton.frame = CGRectMake(16, yOrigin, buttonWidth, 60);
-    _addressButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    _addressButton.bounds = CGRectMake(0, 0, _screenWidth/2, 60);
+    _addressButton.center = CGPointMake(_screenWidth/2, _screenHeight * (4.0/5.0));
     [_addressButton setTitle: @"Enter an Address" forState:UIControlStateNormal];
-    [LBButtonFactory styleButton:_addressButton];
+    [LBButtonFactory clearStyleButton:_addressButton];
     
     [_addressButton addTarget:self action:@selector(addressButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -89,6 +115,9 @@
     if ([LBLocationManager.shared isAuthorized]) {
         [LBLocationManager.shared startFindingLocation];
         HouseImagesViewController *vc = HouseImagesViewController.new;
+        
+//        [self.navigationController presentViewController:vc animated:YES completion:nil];
+
         [self.navigationController pushViewController:vc animated:YES];
     } else if ([LBLocationManager.shared wasDenied]) {
         [[[UIAlertView alloc] initWithTitle:@"Location Services Disabled"
@@ -108,8 +137,9 @@
 - (void)addressButtonWasTapped:(UIButton *)button;
 {
     LBAddressEntryViewController *vc = [[LBAddressEntryViewController alloc] init];
-    vc.shouldAutoFillAddress = NO;
+    
     [self.navigationController pushViewController:vc animated:YES];
+//    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark Alert View Delegate
@@ -121,9 +151,15 @@
     } else if (buttonIndex == 1) {
         [LBLocationManager.shared startFindingLocation];
         LBAddressEntryViewController *vc = [[LBAddressEntryViewController alloc] init];
-        vc.shouldAutoFillAddress = YES;
+
         [self.navigationController pushViewController:vc animated:YES];
+//        [self.navigationController presentViewController:vc animated:YES completion:nil];
     }
+}
+
+- (BOOL)prefersStatusBarHidden;
+{
+    return YES;
 }
 
 @end

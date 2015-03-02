@@ -12,7 +12,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [LBButtonFactory styleButton:_nextButton];
+    [LBButtonFactory blueStyleButton:_nextButton];
 }
 
 @end

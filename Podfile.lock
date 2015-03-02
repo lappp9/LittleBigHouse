@@ -26,6 +26,9 @@ PODS:
   - Google-Maps-iOS-SDK (1.9.2)
   - pop (1.0.7)
   - Shimmer (1.0.2)
+  - Stripe (3.1.0):
+    - Stripe/Core (= 3.1.0)
+  - Stripe/Core (3.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
@@ -33,12 +36,14 @@ DEPENDENCIES:
   - Google-Maps-iOS-SDK (~> 1.9)
   - pop (~> 1.0)
   - Shimmer (~> 1.0)
+  - Stripe
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   AsyncDisplayKit: 897b28140c6c73fbe8d6168f19ce7cbd87c94ee8
-  Google-Maps-iOS-SDK: 3b89f4c151f8fc3ddb0e70dece9bcab33dbec2ea
+  Google-Maps-iOS-SDK: 8122422ca73f79562b707c5578c961730b8a73ed
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
   Shimmer: 057fcfe9c1c978d69d50b64fce93a61080cd08ec
+  Stripe: aaa174b50fac40a16958cbc892457a241d0b4b08
 
 COCOAPODS: 0.35.0

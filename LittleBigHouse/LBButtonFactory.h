@@ -4,6 +4,7 @@
 
 @interface LBButtonFactory : NSObject
 
-+ (void)styleButton:(UIButton *)button;
++ (void)clearStyleButton:(UIButton *)button;
++ (void)blueStyleButton:(UIButton *)button;
 
 @end

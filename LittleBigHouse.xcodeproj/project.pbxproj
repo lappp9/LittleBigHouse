@@ -10,9 +10,9 @@
 		45A7F6C5A1E05B02D8F1D4A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F804FE9A285FB611DBFC2E4 /* libPods.a */; };
 		AE096E291A92ABA500C2510B /* LBLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE096E281A92ABA500C2510B /* LBLocationManager.m */; };
 		AE096E2C1A92BBDD00C2510B /* LBNavigationControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE096E2B1A92BBDD00C2510B /* LBNavigationControllerViewController.m */; };
+		AE4DAD911A9BFC20003781CE /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4DAD901A9BFC20003781CE /* FXBlurView.m */; };
 		AE580F981A8B8B24002152EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580F971A8B8B24002152EA /* main.m */; };
 		AE580F9B1A8B8B24002152EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580F9A1A8B8B24002152EA /* AppDelegate.m */; };
-		AE580FA11A8B8B24002152EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE580F9F1A8B8B24002152EA /* Main.storyboard */; };
 		AE580FA31A8B8B24002152EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE580FA21A8B8B24002152EA /* Images.xcassets */; };
 		AE580FA61A8B8B24002152EA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE580FA41A8B8B24002152EA /* LaunchScreen.xib */; };
 		AE580FB21A8B8B24002152EA /* LittleBigHouseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580FB11A8B8B24002152EA /* LittleBigHouseTests.m */; };
@@ -40,12 +40,13 @@
 		AE096E281A92ABA500C2510B /* LBLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLocationManager.m; sourceTree = "<group>"; };
 		AE096E2A1A92BBDD00C2510B /* LBNavigationControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBNavigationControllerViewController.h; sourceTree = "<group>"; };
 		AE096E2B1A92BBDD00C2510B /* LBNavigationControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBNavigationControllerViewController.m; sourceTree = "<group>"; };
+		AE4DAD8F1A9BFC20003781CE /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		AE4DAD901A9BFC20003781CE /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		AE580F921A8B8B24002152EA /* LittleBigHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleBigHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE580F961A8B8B24002152EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE580F971A8B8B24002152EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE580F991A8B8B24002152EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AE580F9A1A8B8B24002152EA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AE580FA01A8B8B24002152EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE580FA21A8B8B24002152EA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AE580FA51A8B8B24002152EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AE580FAB1A8B8B24002152EA /* LittleBigHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleBigHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,9 +124,10 @@
 		AE580F941A8B8B24002152EA /* LittleBigHouse */ = {
 			isa = PBXGroup;
 			children = (
+				AE4DAD8F1A9BFC20003781CE /* FXBlurView.h */,
+				AE4DAD901A9BFC20003781CE /* FXBlurView.m */,
 				AE580F991A8B8B24002152EA /* AppDelegate.h */,
 				AE580F9A1A8B8B24002152EA /* AppDelegate.m */,
-				AE580F9F1A8B8B24002152EA /* Main.storyboard */,
 				AE580FA21A8B8B24002152EA /* Images.xcassets */,
 				AE580FA41A8B8B24002152EA /* LaunchScreen.xib */,
 				AE580F951A8B8B24002152EA /* Supporting Files */,
@@ -255,7 +257,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE580FA11A8B8B24002152EA /* Main.storyboard in Resources */,
 				AE580FA61A8B8B24002152EA /* LaunchScreen.xib in Resources */,
 				AE580FA31A8B8B24002152EA /* Images.xcassets in Resources */,
 			);
@@ -315,6 +316,7 @@
 				AE096E2C1A92BBDD00C2510B /* LBNavigationControllerViewController.m in Sources */,
 				AEBCB3E41A8D2B21007B6FAB /* LBButtonFactory.m in Sources */,
 				AEBCB3D51A8C2906007B6FAB /* LBHomeViewController.m in Sources */,
+				AE4DAD911A9BFC20003781CE /* FXBlurView.m in Sources */,
 				AEBCB3D81A8C2D2C007B6FAB /* LBAddressEntryViewController.m in Sources */,
 				AE580F981A8B8B24002152EA /* main.m in Sources */,
 			);
@@ -339,14 +341,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AE580F9F1A8B8B24002152EA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AE580FA01A8B8B24002152EA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AE580FA41A8B8B24002152EA /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -439,6 +433,7 @@
 			baseConfigurationReference = F12887C7A2063144E37BBB84 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LittleBigHouse/Info.plist;
@@ -456,6 +451,7 @@
 			baseConfigurationReference = 63C33F6DBF478154D2E180F1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LittleBigHouse/Info.plist;

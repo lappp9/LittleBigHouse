@@ -15,6 +15,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.navigationController.navigationBarHidden = NO;
+
+
     [self layoutLabel];
     [self layoutNextButton];
     [self layoutMapView];
@@ -56,7 +59,7 @@
     _nextButton.frame = CGRectMake(16, yOrigin, buttonWidth, 60);
     _nextButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [_nextButton setTitle: @"Next" forState:UIControlStateNormal];
-    [LBButtonFactory styleButton:_nextButton];
+    [LBButtonFactory blueStyleButton:_nextButton];
     
     [_nextButton addTarget:self action:@selector(nextButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
     

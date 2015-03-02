@@ -43,17 +43,16 @@
 @implementation LBAddressEntryViewController
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
+
+    self.navigationController.navigationBarHidden = NO;
 
     [self layoutLabel];
     
     [self layoutAddressFields];
     
     [self layoutNextButton];
-    
-    [self startShimmerIfNecessary];
-    
-    [self autoFillAddressIfNecessary];
     
     [self disableNextButton];
     
@@ -63,13 +62,6 @@
         if (LBLocationManager.shared.deviceCity && !_locationHasBeenFound) {
             _locationHasBeenFound = YES;
             _labelShimmer.shimmering = NO;
-            
-            if (_shouldAutoFillAddress) {
-                _cityTextField.text = [LBLocationManager.shared deviceCity];
-                _stateTextField.text = [LBLocationManager.shared deviceState];
-                _zipCodeTextField.text = [LBLocationManager.shared deviceZipCode];
-                [self validateTextFields];
-            }
         } else {
             NSLog(@"Still looking or already found");
         }
@@ -170,35 +162,12 @@
     _nextButton.frame = CGRectMake(16, yOrigin, buttonWidth, 60);
     _nextButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [_nextButton setTitle: @"Next" forState:UIControlStateNormal];
-    [LBButtonFactory styleButton:_nextButton];
+    [LBButtonFactory blueStyleButton:_nextButton];
+//    [LBButtonFactory ]
     
     [_nextButton addTarget:self action:@selector(nextButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_nextButton];
-}
-
-- (void)startShimmerIfNecessary;
-{
-    if (_shouldAutoFillAddress) {
-        _labelShimmer = [[FBShimmeringView alloc] initWithFrame:_label.frame];
-        
-        [self.view addSubview:_labelShimmer];
-        _labelShimmer.contentView = _label;
-        _labelShimmer.shimmeringAnimationOpacity = 0.2;
-        _labelShimmer.shimmeringSpeed = 150;
-        _labelShimmer.shimmeringEndFadeDuration = 0.0;
-        _labelShimmer.shimmeringPauseDuration = 0.0;
-        _labelShimmer.shimmering = _shouldAutoFillAddress;
-    }
-}
-
-- (void)autoFillAddressIfNecessary;
-{
-    if ([LBLocationManager.shared isAuthorized] && LBLocationManager.shared.deviceCity && _shouldAutoFillAddress) {
-        _cityTextField.text = [LBLocationManager.shared deviceCity];
-        _stateTextField.text = [LBLocationManager.shared deviceState];
-        _zipCodeTextField.text = [LBLocationManager.shared deviceZipCode];
-    }
 }
 
 - (void)nextButtonWasTapped:(UIButton *)button;
