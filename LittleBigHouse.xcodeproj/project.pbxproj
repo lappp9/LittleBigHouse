@@ -17,6 +17,7 @@
 		AE580FA61A8B8B24002152EA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE580FA41A8B8B24002152EA /* LaunchScreen.xib */; };
 		AE580FB21A8B8B24002152EA /* LittleBigHouseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE580FB11A8B8B24002152EA /* LittleBigHouseTests.m */; };
 		AE6487F91AA4F6680016BA3A /* LBGoogleMapStreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6487F81AA4F6680016BA3A /* LBGoogleMapStreetViewController.m */; };
+		AE6487FC1AA66C0E0016BA3A /* LBConnectivityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6487FB1AA66C0E0016BA3A /* LBConnectivityMonitor.m */; };
 		AEBCB3D51A8C2906007B6FAB /* LBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3D41A8C2906007B6FAB /* LBHomeViewController.m */; };
 		AEBCB3D81A8C2D2C007B6FAB /* LBAddressEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3D71A8C2D2C007B6FAB /* LBAddressEntryViewController.m */; };
 		AEBCB3DB1A8C66AD007B6FAB /* AddressConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBCB3DA1A8C66AD007B6FAB /* AddressConfirmationViewController.m */; };
@@ -55,6 +56,8 @@
 		AE580FB11A8B8B24002152EA /* LittleBigHouseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LittleBigHouseTests.m; sourceTree = "<group>"; };
 		AE6487F71AA4F6680016BA3A /* LBGoogleMapStreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBGoogleMapStreetViewController.h; sourceTree = "<group>"; };
 		AE6487F81AA4F6680016BA3A /* LBGoogleMapStreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBGoogleMapStreetViewController.m; sourceTree = "<group>"; };
+		AE6487FA1AA66C0E0016BA3A /* LBConnectivityMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBConnectivityMonitor.h; sourceTree = "<group>"; };
+		AE6487FB1AA66C0E0016BA3A /* LBConnectivityMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBConnectivityMonitor.m; sourceTree = "<group>"; };
 		AEBCB3D31A8C2906007B6FAB /* LBHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeViewController.h; sourceTree = "<group>"; };
 		AEBCB3D41A8C2906007B6FAB /* LBHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeViewController.m; sourceTree = "<group>"; };
 		AEBCB3D61A8C2D2C007B6FAB /* LBAddressEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBAddressEntryViewController.h; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 				AEBCB3E31A8D2B21007B6FAB /* LBButtonFactory.m */,
 				AE096E271A92ABA500C2510B /* LBLocationManager.h */,
 				AE096E281A92ABA500C2510B /* LBLocationManager.m */,
+				AE6487FA1AA66C0E0016BA3A /* LBConnectivityMonitor.h */,
+				AE6487FB1AA66C0E0016BA3A /* LBConnectivityMonitor.m */,
 			);
 			path = LittleBigHouse;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				AE096E291A92ABA500C2510B /* LBLocationManager.m in Sources */,
 				AEBCB3DB1A8C66AD007B6FAB /* AddressConfirmationViewController.m in Sources */,
 				AEBCB3DE1A8C6C27007B6FAB /* HouseImagesViewController.m in Sources */,
+				AE6487FC1AA66C0E0016BA3A /* LBConnectivityMonitor.m in Sources */,
 				AE580F9B1A8B8B24002152EA /* AppDelegate.m in Sources */,
 				AE6487F91AA4F6680016BA3A /* LBGoogleMapStreetViewController.m in Sources */,
 				AE096E2C1A92BBDD00C2510B /* LBNavigationControllerViewController.m in Sources */,

@@ -4,6 +4,8 @@
 #import "LBLocationManager.h"
 #import "HouseImagesViewController.h"
 #import <FBShimmeringView.h>
+#import "LBConnectivityMonitor.h"
+#import <pop/POP.h>
 
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 
@@ -37,7 +39,10 @@
 @property (nonatomic) UITextField *stateTextField;
 @property (nonatomic) UITextField *zipCodeTextField;
 
-@property (nonatomic) BOOL locationHasBeenFound;
+@property (nonatomic) UILabel *noInternetLabel;
+
+@property (nonatomic) CGFloat screenWidth;
+@property (nonatomic) CGFloat screenHeight;
 @end
 
 @implementation LBAddressEntryViewController
@@ -46,11 +51,15 @@
 
     [super viewDidLoad];
     
+    _screenHeight = [UIScreen mainScreen].bounds.size.height;
+    _screenWidth  = [UIScreen mainScreen].bounds.size.width;
+    
     if (![self navigationController]) {
         [self addDismissableNavBar];
     }
     
     self.navigationController.navigationBarHidden = NO;
+    
 
     [self layoutLabel];
     
@@ -60,20 +69,44 @@
     
     [self disableNextButton];
     
-    _locationHasBeenFound = NO;
-    
-    [NSNotificationCenter.defaultCenter addObserverForName:kZipCodeWasSetNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-        if (LBLocationManager.shared.deviceCity && !_locationHasBeenFound) {
-            _locationHasBeenFound = YES;
-            _labelShimmer.shimmering = NO;
-        } else {
-            NSLog(@"Still looking or already found");
-        }
-    }];
-    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addGestureRecognizer:[UITapGestureRecognizer.alloc initWithTarget:self action:@selector(viewWasTapped:)]];
+}
+
+- (void)viewDidAppear:(BOOL)animated;
+{
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(noInternetConnection:) name:@"noInternetConnection" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(internetConnection:) name:@"internetConnection" object:nil];
+    
+    if (!LBConnectivityMonitor.shared.connected) {
+        [self noInternetConnection:nil];
+    }
+}
+
+- (void)noInternetConnection:(NSNotification *)note;
+{
+    _noInternetLabel = [LBConnectivityMonitor.shared networkNotAvailableLabel];
+    [self.view addSubview:_noInternetLabel];
+    [self.view bringSubviewToFront:_noInternetLabel];
+    _noInternetLabel.alpha = 1.0;
+    _noInternetLabel.layer.zPosition = 1;
+    
+    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
+    anim.toValue = [NSValue valueWithCGPoint:CGPointMake(_screenWidth/2, _noInternetLabel.frame.size.height/2 + 50)];
+    
+    POPBasicAnimation *alphaAnim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    alphaAnim.toValue = @(1.0);
+    
+    [_noInternetLabel pop_addAnimation:anim forKey:nil];
+    [_noInternetLabel pop_addAnimation:alphaAnim forKey:nil];
+}
+
+- (void)internetConnection:(NSNotification *)note;
+{
+    if (_noInternetLabel && [self.view.subviews containsObject:_noInternetLabel]) {
+        [_noInternetLabel removeFromSuperview];
+    }
 }
 
 - (void)dismissWasTapped:(UIBarButtonItem *)backButton;
@@ -208,12 +241,13 @@
 
 - (void)addDismissableNavBar;
 {
-    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, _screenWidth, 50)];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissWasTapped:)];
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Save Images"];
     item.leftBarButtonItem = backButton;
     [navbar setItems:@[item]];
+    navbar.layer.zPosition = 2;
     
     [self.view addSubview:navbar];
 }
@@ -223,4 +257,10 @@
     return YES;
 }
 
+- (void)viewWillDisappear:(BOOL)animated;
+{
+    if ([self.view.subviews containsObject:_noInternetLabel]) {
+        [_noInternetLabel removeFromSuperview];
+    }
+}
 @end

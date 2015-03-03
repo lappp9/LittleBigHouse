@@ -3,6 +3,7 @@
 #import "LBNavigationControllerViewController.h"
 #import "LBHomeViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "LBConnectivityMonitor.h"
 
 @interface AppDelegate ()
 @end
@@ -16,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSServices provideAPIKey:@"AIzaSyC1PvU2xyN8yCk5SOpm6v5b-KA9SstIrXY"];
+    
+    [LBConnectivityMonitor shared];
     
     CGRect r = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     
