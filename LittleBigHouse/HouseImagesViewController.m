@@ -12,6 +12,11 @@
 @property (nonatomic) CGFloat screenHeight;
 
 @property (nonatomic) UIView *streetViewContainer;
+
+@property (nonatomic) UIImageView *leftScreenshot;
+@property (nonatomic) UIImageView *centerScreenshot;
+@property (nonatomic) UIImageView *rightScreenshot;
+
 @end
 
 @implementation HouseImagesViewController
@@ -77,20 +82,57 @@
 
 - (void)layoutScreenShotViews:(UIView *)mapView;
 {
-    UIView *leftScreenshot = [[UIView alloc] init];
-    UIView *centerScreenshot = [[UIView alloc] init];
-    UIView *rightScreenShot = [[UIView alloc] init];
+    _leftScreenshot   = [[UIImageView alloc] init];
+    _centerScreenshot = [[UIImageView alloc] init];
+    _rightScreenshot  = [[UIImageView alloc] init];
     
     NSInteger i = 0;
     CGFloat subViewWidth = mapView.frame.size.width/3;
     NSArray *colors = @[[UIColor blueColor], [UIColor redColor], [UIColor purpleColor]];
-    for (UIView *view in @[leftScreenshot, centerScreenshot, rightScreenShot]) {
+    
+    for (UIView *view in @[_leftScreenshot, _centerScreenshot, _rightScreenshot]) {
         view.frame = CGRectMake(i * subViewWidth, mapView.frame.size.height * (7.0/9.0), subViewWidth, mapView.frame.size.height * (2.0/9.0));
         view.backgroundColor = (UIColor *)colors[i];
+        
+        view.userInteractionEnabled = YES;
+        
         [mapView addSubview:view];
         i++;
     }
+    
+    UITapGestureRecognizer *leftTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftScreenshotWasTapped:)];
+    UITapGestureRecognizer *centerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(centerScreenshotWasTapped:)];
+    UITapGestureRecognizer *rightTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rightScreenshotWasTapped:)];
+    
+    [_leftScreenshot addGestureRecognizer:leftTap];
+    [_centerScreenshot addGestureRecognizer:centerTap];
+    [_rightScreenshot addGestureRecognizer:rightTap];
 }
+
+- (void)leftScreenshotWasTapped:(UITapGestureRecognizer *)tap;
+{
+    NSLog(@"left tapped");
+    
+    UIImage *screenshot = [self imageWithView:_streetViewContainer];
+    
+    _leftScreenshot.image = screenshot;
+    
+}
+
+- (void)centerScreenshotWasTapped:(UITapGestureRecognizer *)tap;
+{
+    NSLog(@"center tapped");
+    UIImage *screenshot = [self imageWithView:_streetViewContainer];
+    _centerScreenshot.image = screenshot;
+}
+
+- (void)rightScreenshotWasTapped:(UITapGestureRecognizer *)tap;
+{
+    NSLog(@"right tapped");
+    UIImage *screenshot = [self imageWithView:_streetViewContainer];
+    _rightScreenshot.image = screenshot;
+}
+
 
 - (void)layoutNextButton;
 {
@@ -106,6 +148,18 @@
     [_nextButton addTarget:self action:@selector(nextButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_nextButton];
+}
+
+- (UIImage *) imageWithView:(UIView *)view
+{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return img;
 }
 
 - (void)nextButtonWasTapped:(UIButton *)button;
