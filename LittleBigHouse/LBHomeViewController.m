@@ -109,28 +109,27 @@
     _infoLabel.numberOfLines = 9;
     _infoLabel.textColor = [UIColor whiteColor];
     _infoLabel.textAlignment = NSTextAlignmentLeft;
-//    _infoLabel.minimumScaleFactor = 
 
-    UIFont *boldFont    = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
-    UIFont *nonBoldFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+    UIFont *largeFont    = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+    UIFont *smallFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
     
-    NSDictionary *regularAttributes = @{ NSFontAttributeName : nonBoldFont };
-    NSDictionary *boldAttributes    = @{ NSFontAttributeName : boldFont };
+    NSDictionary *smallAttributes = @{ NSFontAttributeName : smallFont };
+    NSDictionary *largeAttributes    = @{ NSFontAttributeName : largeFont };
     
-    NSMutableAttributedString *final = [[NSMutableAttributedString alloc] initWithString:@"1." attributes:boldAttributes];
-    [final appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Select a location\n\n" attributes:regularAttributes]];
+    NSMutableAttributedString *final = [[NSMutableAttributedString alloc] initWithString:@"1." attributes:largeAttributes];
+    [final appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Select a location\n\n" attributes:smallAttributes]];
     
-    NSMutableAttributedString *second = [[NSMutableAttributedString alloc] initWithString:@"2." attributes:boldAttributes];
-    [second appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Capture Views\n\n" attributes:regularAttributes]];
+    NSMutableAttributedString *second = [[NSMutableAttributedString alloc] initWithString:@"2." attributes:largeAttributes];
+    [second appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Capture Views\n\n" attributes:smallAttributes]];
     
-    NSMutableAttributedString *third = [[NSMutableAttributedString alloc] initWithString:@"3." attributes:boldAttributes];
-    [third appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Select a product\n\n" attributes:regularAttributes]];
+    NSMutableAttributedString *third = [[NSMutableAttributedString alloc] initWithString:@"3." attributes:largeAttributes];
+    [third appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Select a product\n\n" attributes:smallAttributes]];
     
-    NSMutableAttributedString *fourth = [[NSMutableAttributedString alloc] initWithString:@"4." attributes:boldAttributes];
-    [fourth appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Place an order\n\n" attributes:regularAttributes]];
+    NSMutableAttributedString *fourth = [[NSMutableAttributedString alloc] initWithString:@"4." attributes:largeAttributes];
+    [fourth appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Place an order\n\n" attributes:smallAttributes]];
     
-    NSMutableAttributedString *fifth = [[NSMutableAttributedString alloc] initWithString:@"5." attributes:boldAttributes];
-    [fifth appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Enjoy sweet nostalgia\n" attributes:regularAttributes]];
+    NSMutableAttributedString *fifth = [[NSMutableAttributedString alloc] initWithString:@"5." attributes:largeAttributes];
+    [fifth appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Enjoy sweet nostalgia\n" attributes:smallAttributes]];
     
     [final appendAttributedString:second];
     [final appendAttributedString:third];
