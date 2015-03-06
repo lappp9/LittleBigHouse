@@ -259,8 +259,7 @@
         
     } else if (buttonIndex == 1) {
         [LBLocationManager.shared startFindingLocation];
-        LBAddressEntryViewController *vc = [[LBAddressEntryViewController alloc] init];
-
+        HouseImagesViewController *vc = [[HouseImagesViewController alloc] init];
         [self.navigationController presentViewController:vc animated:YES completion:nil];
     }
 }
