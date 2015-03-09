@@ -43,6 +43,8 @@
 
 @property (nonatomic) CGFloat screenWidth;
 @property (nonatomic) CGFloat screenHeight;
+@property (nonatomic) CGPoint normalCenter;
+@property (nonatomic) CGPoint raisedCenter;
 @end
 
 @implementation LBAddressEntryViewController
@@ -82,6 +84,9 @@
     if (!LBConnectivityMonitor.shared.connected) {
         [self noInternetConnection:nil];
     }
+    
+    _normalCenter = self.view.center;
+    _raisedCenter = CGPointMake(self.view.center.x, self.view.center.y - 44);
 }
 
 - (void)noInternetConnection:(NSNotification *)note;
@@ -122,6 +127,8 @@
     for (UITextField *tf in @[_streetOneTextField, _streetTwoTextField, _cityTextField, _stateTextField, _zipCodeTextField]) {
         [tf resignFirstResponder];
     }
+    
+    [self animateViewDown];
 }
 
 - (BOOL)validateTextFields;
@@ -169,7 +176,6 @@
     
     NSArray *textFields = @[_streetOneTextField, _streetTwoTextField, _cityTextField, _stateTextField, _zipCodeTextField];
     NSArray *placeholders = @[@"Street 1", @"Street 2", @"City", @"State", @"Zip Code"];
-//    NSArray *nextResponders = @[_streetTwoTextField, _cityTextField, _stateTextField, _zipCodeTextField];
     
     for (NSInteger i = 0; i < textFields.count; i++) {
         UITextField *textField = textFields[i];
@@ -193,7 +199,6 @@
     textField.delegate = self;
     textField.returnKeyType = returnKeyType;
     textField.tag = n;
-//    textField.nextResponder = nextResponder;
     
     [self.view addSubview:textField];
 }
@@ -208,7 +213,6 @@
     _nextButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [_nextButton setTitle: @"Next" forState:UIControlStateNormal];
     [LBButtonFactory blueStyleButton:_nextButton];
-//    [LBButtonFactory ]
     
     [_nextButton addTarget:self action:@selector(nextButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -224,6 +228,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if ([textField isEqual:_zipCodeTextField]) {
+        [self animateViewDown];
         [textField resignFirstResponder];
         if ([self validateTextFields]) {
             [_nextButton sendActionsForControlEvents:UIControlEventTouchUpInside];
@@ -237,6 +242,25 @@
     [self validateTextFields];
     
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField;
+{
+    [self animateViewUp];
+}
+
+- (void)animateViewUp;
+{
+    POPBasicAnimation *moveWholeView = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
+    moveWholeView.toValue = [NSValue valueWithCGPoint:_raisedCenter];
+    [self.view pop_addAnimation:moveWholeView forKey:nil];
+}
+
+- (void)animateViewDown;
+{
+    POPBasicAnimation *moveWholeView = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
+    moveWholeView.toValue = [NSValue valueWithCGPoint:_normalCenter];
+    [self.view pop_addAnimation:moveWholeView forKey:nil];
 }
 
 - (void)addDismissableNavBar;
