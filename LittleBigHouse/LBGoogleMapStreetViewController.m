@@ -18,7 +18,7 @@
     _screenWidth  = [UIScreen mainScreen].bounds.size.width;
 
     if ([LBLocationManager.shared isAuthorized]) {
-        CLLocationCoordinate2D panoramaNear = [LBLocationManager.shared currentLocation].coordinate;
+        CLLocationCoordinate2D panoramaNear = _coordinates;
         GMSPanoramaView *panoView = [GMSPanoramaView panoramaWithFrame:self.view.frame nearCoordinate:panoramaNear];
         self.view = panoView;
     } else {
@@ -39,10 +39,10 @@
     }
 }
 
-- (instancetype)init;
+- (instancetype)initWithLocationManagerLocation;
 {
     if (!(self = [super init])) { return nil; }
-    
+
     if ([LBLocationManager.shared isAuthorized]) {
         _coordinates = [LBLocationManager.shared currentLocation].coordinate;
     }
@@ -52,7 +52,6 @@
 
 - (instancetype)initWithCoordinates:(CLLocationCoordinate2D)location;
 {
-    //this should be passed in when initialized with an address
     if (!(self = [super init])) { return nil; }
     
     _coordinates = location;

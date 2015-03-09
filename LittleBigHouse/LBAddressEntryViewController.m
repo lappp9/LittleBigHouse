@@ -6,6 +6,7 @@
 #import <FBShimmeringView.h>
 #import "LBConnectivityMonitor.h"
 #import <pop/POP.h>
+#import "LBNavigationControllerViewController.h"
 
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 
@@ -56,13 +57,8 @@
     _screenHeight = [UIScreen mainScreen].bounds.size.height;
     _screenWidth  = [UIScreen mainScreen].bounds.size.width;
     
-    if (![self navigationController]) {
-        [self addDismissableNavBar];
-    }
+    [self addNavBarWithCancelButton];
     
-    self.navigationController.navigationBarHidden = NO;
-    
-
     [self layoutLabel];
     
     [self layoutAddressFields];
@@ -74,6 +70,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addGestureRecognizer:[UITapGestureRecognizer.alloc initWithTarget:self action:@selector(viewWasTapped:)]];
+}
+
+- (void)viewWillAppear:(BOOL)animated;
+{
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated;
@@ -221,8 +222,46 @@
 
 - (void)nextButtonWasTapped:(UIButton *)button;
 {
-    HouseImagesViewController *vc = [[HouseImagesViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    //get coordinates and then show the view controller
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    [geocoder geocodeAddressString:self.currentlyEnteredAddress completionHandler:^(NSArray* placemarks, NSError* error){
+        NSLog(@"Error wa %@\n", error);
+        NSLog(@"Address: %@", self.currentlyEnteredAddress);
+        
+        CLLocationCoordinate2D coordinate;
+        
+        for (CLPlacemark* aPlacemark in placemarks)
+        {
+            NSString *latDest1 = [NSString stringWithFormat:@"%.4f",aPlacemark.location.coordinate.latitude];
+            NSString *lngDest1 = [NSString stringWithFormat:@"%.4f",aPlacemark.location.coordinate.longitude];
+            
+            NSLog(@"lat: %@, lng: %@", latDest1, lngDest1);
+            
+            coordinate = aPlacemark.location.coordinate;
+        }
+        
+        if (error) {
+            [[UIAlertView.alloc initWithTitle:@"Invalid Address" message:@"It looks like the address you entered was invalid.\n\n  Please check that it's correct and try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        } else {
+            HouseImagesViewController *vc = [[HouseImagesViewController alloc] init];
+            vc.coordinates = coordinate;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }];
+}
+
+- (NSString *)currentlyEnteredAddress;
+{
+    return [[[[[[[[_streetOneTextField.text stringByAppendingString:@" "]
+                                          stringByAppendingString:_streetTwoTextField.text]
+                                          stringByAppendingString:@", "]
+                                          stringByAppendingString:_cityTextField.text]
+                                          stringByAppendingString:@" "]
+                                          stringByAppendingString:_stateTextField.text]
+                                          stringByAppendingString:@" "]
+                                          stringByAppendingString:_zipCodeTextField.text];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -263,12 +302,12 @@
     [self.view pop_addAnimation:moveWholeView forKey:nil];
 }
 
-- (void)addDismissableNavBar;
+- (void)addNavBarWithCancelButton;
 {
     UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, _screenWidth, 50)];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissWasTapped:)];
-    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Save Images"];
+    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@""];
     item.leftBarButtonItem = backButton;
     [navbar setItems:@[item]];
     navbar.layer.zPosition = 2;

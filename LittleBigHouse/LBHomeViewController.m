@@ -7,6 +7,7 @@
 #import "FXBlurView.h"
 #import <AsyncDisplayKit.h>
 #import <pop/POP.h>
+#import "LBNavigationControllerViewController.h"
 
 @interface LBHomeViewController ()
 @property (nonatomic) CGFloat screenWidth;
@@ -105,7 +106,8 @@
     _questionLabel.textAlignment = NSTextAlignmentCenter;
     _questionLabel.textColor = [UIColor whiteColor];
     
-    _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(_screenWidth/4, _screenHeight * (1.6/4.0), _screenWidth/2, _screenHeight/2.0)];
+    _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _screenWidth/1.5, _screenHeight/2.0)];
+    _infoLabel.center = CGPointMake(_screenWidth/2, _screenHeight * (2.5/4.0) + 30);
     _infoLabel.numberOfLines = 9;
     _infoLabel.textColor = [UIColor whiteColor];
     _infoLabel.textAlignment = NSTextAlignmentLeft;
@@ -129,7 +131,7 @@
     [fourth appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Place an order\n\n" attributes:smallAttributes]];
     
     NSMutableAttributedString *fifth = [[NSMutableAttributedString alloc] initWithString:@"5." attributes:largeAttributes];
-    [fifth appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Enjoy sweet nostalgia\n" attributes:smallAttributes]];
+    [fifth appendAttributedString:[[NSAttributedString alloc] initWithString:@"  Enjoy sweet nostalgia" attributes:smallAttributes]];
     
     [final appendAttributedString:second];
     [final appendAttributedString:third];
@@ -211,8 +213,9 @@
 
 - (void)addressButtonWasTapped:(UIButton *)button;
 {
-    LBAddressEntryViewController *vc = [[LBAddressEntryViewController alloc] init];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    LBNavigationControllerViewController *nav = [[LBNavigationControllerViewController alloc] initWithRootViewController:[[LBAddressEntryViewController alloc] init]];
+
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)infoButtonWasTapped:(UITapGestureRecognizer *)tap;

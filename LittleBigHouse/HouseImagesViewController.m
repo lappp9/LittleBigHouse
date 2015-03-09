@@ -35,6 +35,8 @@
 
     if (![self navigationController]) {
         [self addDismissableNavBar];
+    } else {
+        self.title = @"Take Screenshots";
     }
 
     [self layoutNextButton];
@@ -79,10 +81,10 @@
 
 - (void)addDismissableNavBar;
 {
-    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, _screenWidth, 50)];
+    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, _screenWidth, 44)];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissWasTapped:)];
-    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Save Images"];
+    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Take Screenshots"];
     item.leftBarButtonItem = backButton;
     [navbar setItems:@[item]];
     navbar.layer.zPosition = 2;
@@ -97,27 +99,35 @@
 
 - (void)layoutMapView;
 {
-    UIView *tempMapView = [[UIView alloc] init];
+    UIView *mapView = [[UIView alloc] init];
     
-    CGFloat mapHeight = _screenHeight - 50 - 8 - 20 - _nextButton.frame.size.height;
+    CGFloat mapHeight = _screenHeight - 44 - 8 - 20 - _nextButton.frame.size.height;
     
-    tempMapView.frame = CGRectMake(0, 51, _screenWidth, mapHeight);
-    tempMapView.backgroundColor = [UIColor darkGrayColor];
+    mapView.frame = CGRectMake(0, 44, _screenWidth, mapHeight);
+    mapView.backgroundColor = [UIColor darkGrayColor];
     
     _streetViewContainer = [[UIView alloc] init];
     _streetViewContainer.frame = CGRectMake(0, 0, _screenWidth, mapHeight * (7.0/9.0));
     _streetViewContainer.backgroundColor = [UIColor greenColor];
-
-    LBGoogleMapStreetViewController *vc = [[LBGoogleMapStreetViewController alloc] init];
+    
+    
+    LBGoogleMapStreetViewController *vc;
+    
+    if (_coordinates.latitude == 0 && _coordinates.longitude == 0) {
+        vc = [[LBGoogleMapStreetViewController alloc] initWithLocationManagerLocation];
+    } else {
+        vc = [[LBGoogleMapStreetViewController alloc] initWithCoordinates:_coordinates];
+    }
+    
     vc.view.frame = _streetViewContainer.frame;
     
     [_streetViewContainer addSubview:vc.view];
    
-    [tempMapView addSubview:_streetViewContainer];
+    [mapView addSubview:_streetViewContainer];
     
-    [self layoutScreenShotViews:tempMapView];
+    [self layoutScreenShotViews:mapView];
     
-    [self.view addSubview:tempMapView];
+    [self.view addSubview:mapView];
 }
 
 - (void)layoutScreenShotViews:(UIView *)mapView;
@@ -144,6 +154,18 @@
     UITapGestureRecognizer *centerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(centerScreenshotWasTapped:)];
     UITapGestureRecognizer *rightTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rightScreenshotWasTapped:)];
     
+    _leftScreenshot.image = [UIImage imageNamed:@"frontLeft"];
+    _centerScreenshot.image = [UIImage imageNamed:@"center"];
+    _rightScreenshot.image = [UIImage imageNamed:@"frontRight"];
+    
+    _leftScreenshot.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _centerScreenshot.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _rightScreenshot.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    _leftScreenshot.layer.borderWidth = 1;
+    _centerScreenshot.layer.borderWidth = 1;
+    _rightScreenshot.layer.borderWidth = 1;
+    
     [_leftScreenshot addGestureRecognizer:leftTap];
     [_centerScreenshot addGestureRecognizer:centerTap];
     [_rightScreenshot addGestureRecognizer:rightTap];
@@ -151,24 +173,28 @@
 
 - (void)leftScreenshotWasTapped:(UITapGestureRecognizer *)tap;
 {
-    NSLog(@"left tapped");
-    
     UIImage *screenshot = [self imageWithView:_streetViewContainer];
+    
+    _leftScreenshot.layer.borderColor = [UIColor whiteColor].CGColor;
     
     _leftScreenshot.image = screenshot;
 }
 
 - (void)centerScreenshotWasTapped:(UITapGestureRecognizer *)tap;
 {
-    NSLog(@"center tapped");
     UIImage *screenshot = [self imageWithView:_streetViewContainer];
+    
+    _centerScreenshot.layer.borderColor = [UIColor whiteColor].CGColor;
+
     _centerScreenshot.image = screenshot;
 }
 
 - (void)rightScreenshotWasTapped:(UITapGestureRecognizer *)tap;
 {
-    NSLog(@"right tapped");
     UIImage *screenshot = [self imageWithView:_streetViewContainer];
+    
+    _rightScreenshot.layer.borderColor = [UIColor whiteColor].CGColor;
+
     _rightScreenshot.image = screenshot;
 }
 

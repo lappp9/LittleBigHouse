@@ -5,4 +5,5 @@
 
 @interface LBGoogleMapStreetViewController : UIViewController
 - (instancetype)initWithCoordinates:(CLLocationCoordinate2D)location;
+- (instancetype)initWithLocationManagerLocation;
 @end
