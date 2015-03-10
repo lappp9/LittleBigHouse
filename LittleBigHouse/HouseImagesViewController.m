@@ -154,9 +154,9 @@
     UITapGestureRecognizer *centerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(centerScreenshotWasTapped:)];
     UITapGestureRecognizer *rightTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rightScreenshotWasTapped:)];
     
-    _leftScreenshot.image = [UIImage imageNamed:@"frontLeft"];
-    _centerScreenshot.image = [UIImage imageNamed:@"center"];
-    _rightScreenshot.image = [UIImage imageNamed:@"frontRight"];
+    _leftScreenshot.image = [UIImage imageNamed:@"front_left"];
+    _centerScreenshot.image = [UIImage imageNamed:@"front"];
+    _rightScreenshot.image = [UIImage imageNamed:@"front_right"];
     
     _leftScreenshot.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _centerScreenshot.layer.borderColor = [UIColor lightGrayColor].CGColor;
