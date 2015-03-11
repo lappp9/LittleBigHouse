@@ -107,7 +107,7 @@
     _questionLabel.textColor = [UIColor whiteColor];
     
     _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _screenWidth/1.5, _screenHeight/2.0)];
-    _infoLabel.center = CGPointMake(_screenWidth/2, _screenHeight * (2.5/4.0) + 30);
+    _infoLabel.center = CGPointMake(_screenWidth/2  +30, _screenHeight * (2.5/4.0) + 30);
     _infoLabel.numberOfLines = 9;
     _infoLabel.textColor = [UIColor whiteColor];
     _infoLabel.textAlignment = NSTextAlignmentLeft;
